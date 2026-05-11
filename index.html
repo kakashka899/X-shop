@@ -10,12 +10,13 @@
 body{
     margin:0;
     overflow:hidden;
-    background:black;
     font-family:Arial,sans-serif;
     color:white;
+    background:black;
+    transition:0.3s;
 }
 
-/* ---------- ЗВЕЗДЫ ---------- */
+/* ---------- ФОН ---------- */
 
 .stars{
     position:fixed;
@@ -26,7 +27,6 @@ body{
 
 .star{
     position:absolute;
-    background:white;
     border-radius:50%;
     animation:blink infinite ease-in-out;
 }
@@ -79,17 +79,75 @@ body{
     z-index:2;
 }
 
-.menu a{
+.menu a,
+.menu button{
     color:#d6b3ff;
     text-decoration:none;
     font-size:22px;
 
+    background:none;
+    border:none;
+
+    cursor:pointer;
+
+    text-align:left;
+
     transition:0.2s;
 }
 
-.menu a:hover{
+.menu a:hover,
+.menu button:hover{
     color:white;
     transform:translateX(6px);
+}
+
+/* ---------- НАСТРОЙКИ ---------- */
+
+.settings-panel{
+    position:absolute;
+
+    left:220px;
+    top:100px;
+
+    width:320px;
+
+    background:rgba(20,20,20,0.95);
+
+    border:1px solid rgba(180,120,255,0.4);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    display:none;
+
+    z-index:10;
+}
+
+.settings-panel h2{
+    margin-top:0;
+    color:#d6b3ff;
+}
+
+.setting{
+    margin-bottom:20px;
+}
+
+.setting label{
+    display:block;
+    margin-bottom:10px;
+}
+
+select,
+input{
+    width:100%;
+    padding:10px;
+
+    border-radius:10px;
+    border:none;
+
+    background:#222;
+    color:white;
 }
 
 /* ---------- КАРТОЧКИ ---------- */
@@ -130,28 +188,11 @@ body{
     box-sizing:border-box;
 }
 
-/* ---------- АНИМАЦИЯ ---------- */
-
 .card:hover{
-    animation:float 0.9s infinite ease-in-out;
+    transform:translateY(-3px);
 
     box-shadow:
         0 0 25px rgba(168, 85, 247, 0.45);
-}
-
-@keyframes float{
-
-    0%{
-        transform:translateY(0px);
-    }
-
-    50%{
-        transform:translateY(-8px);
-    }
-
-    100%{
-        transform:translateY(0px);
-    }
 }
 
 /* ---------- ТОВАР ---------- */
@@ -210,13 +251,28 @@ body{
 }
 
 .info-box summary{
+    list-style:none;
     cursor:pointer;
 
     font-size:18px;
 
     color:#e0c3ff;
 
-    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.info-box summary::-webkit-details-marker{
+    display:none;
+}
+
+.arrow{
+    transition:0.2s;
+}
+
+.info-box[open] .arrow{
+    transform:rotate(90deg);
 }
 
 .info-box p{
@@ -225,6 +281,28 @@ body{
     line-height:1.5;
 
     font-size:16px;
+
+    margin-top:14px;
+}
+
+/* ---------- БЕЛАЯ ТЕМА ---------- */
+
+.white-theme{
+    background:white;
+    color:black;
+}
+
+.white-theme .card{
+    background:#f1f1f1;
+    border:1px solid #ccc;
+}
+
+.white-theme .product-title{
+    color:#7b2cff;
+}
+
+.white-theme .product-price{
+    color:#6a00ff;
 }
 
 </style>
@@ -243,13 +321,73 @@ body{
     <a href="#">Товары</a>
     <a href="#">Контакты</a>
     <a href="#">Отзывы</a>
+
+    <button onclick="toggleSettings()">
+        Настройки
+    </button>
+</div>
+
+<!-- НАСТРОЙКИ -->
+
+<div class="settings-panel" id="settingsPanel">
+
+    <h2>Настройки интерфейса</h2>
+
+    <!-- ПОДСКАЗКИ -->
+
+    <div class="setting">
+
+        <label>
+            Подсказки
+        </label>
+
+        <select onchange="toggleHints(this.value)">
+            <option value="on">
+                Включены
+            </option>
+
+            <option value="off">
+                Выключены
+            </option>
+        </select>
+
+    </div>
+
+    <!-- ФОН -->
+
+    <div class="setting">
+
+        <label>
+            Фон
+        </label>
+
+        <select onchange="changeTheme(this.value)">
+
+            <option value="standard">
+                Стандартный
+            </option>
+
+            <option value="splin">
+                splin
+            </option>
+
+            <option value="white-stars">
+                Белый
+            </option>
+
+            <option value="pure-white">
+                👎просто белый👎
+            </option>
+
+        </select>
+
+    </div>
+
 </div>
 
 <!-- КАРТОЧКИ -->
 
 <div class="cards">
-
-    <!-- 1 КАРТОЧКА -->
 
     <div class="card">
 
@@ -269,12 +407,11 @@ body{
             1 пластина орбистали
         </div>
 
-        <!-- ОТКРЫВАЮЩЕЕСЯ ОПИСАНИЕ -->
-
-        <details class="info-box">
+        <details class="info-box hint-box">
 
             <summary>
-                Что такое енерго масло ▼
+                <span class="arrow">></span>
+                Что такое енерго масло?
             </summary>
 
             <p>
@@ -295,26 +432,110 @@ body{
 
 const starsContainer = document.getElementById("stars");
 
-/* создание звезд */
+let currentTheme = "standard";
 
-for(let i = 0; i < 300; i++){
+/* ---------- СОЗДАНИЕ ЗВЕЗД ---------- */
 
-    let star = document.createElement("div");
+function createStars(color = "white"){
 
-    star.className = "star";
+    starsContainer.innerHTML = "";
 
-    star.style.top = Math.random() * 100 + "%";
-    star.style.left = Math.random() * 100 + "%";
+    for(let i = 0; i < 300; i++){
 
-    let size = Math.random() * 3 + 1 + "px";
+        let star = document.createElement("div");
 
-    star.style.width = size;
-    star.style.height = size;
+        star.className = "star";
 
-    star.style.animationDuration =
-        (Math.random() * 4 + 2) + "s";
+        star.style.top = Math.random() * 100 + "%";
+        star.style.left = Math.random() * 100 + "%";
 
-    starsContainer.appendChild(star);
+        let size = Math.random() * 3 + 1 + "px";
+
+        star.style.width = size;
+        star.style.height = size;
+
+        star.style.background = color;
+
+        star.style.animationDuration =
+            (Math.random() * 4 + 2) + "s";
+
+        starsContainer.appendChild(star);
+    }
+}
+
+createStars();
+
+/* ---------- НАСТРОЙКИ ---------- */
+
+function toggleSettings(){
+
+    const panel =
+        document.getElementById("settingsPanel");
+
+    if(panel.style.display === "block"){
+        panel.style.display = "none";
+    }else{
+        panel.style.display = "block";
+    }
+}
+
+/* ---------- ПОДСКАЗКИ ---------- */
+
+function toggleHints(value){
+
+    const hints =
+        document.querySelectorAll(".hint-box");
+
+    hints.forEach(hint => {
+
+        if(value === "off"){
+            hint.style.display = "none";
+        }else{
+            hint.style.display = "block";
+        }
+
+    });
+}
+
+/* ---------- ТЕМЫ ---------- */
+
+function changeTheme(theme){
+
+    currentTheme = theme;
+
+    document.body.classList.remove("white-theme");
+
+    if(theme === "standard"){
+
+        document.body.style.background = "black";
+
+        createStars("white");
+    }
+
+    if(theme === "splin"){
+
+        document.body.style.background = "black";
+
+        createStars("#bb66ff");
+    }
+
+    if(theme === "white-stars"){
+
+        document.body.style.background = "white";
+
+        document.body.classList.add("white-theme");
+
+        createStars("black");
+    }
+
+    if(theme === "pure-white"){
+
+        starsContainer.innerHTML = "";
+
+        document.body.style.background = "white";
+
+        document.body.classList.add("white-theme");
+    }
 }
 
 </script>

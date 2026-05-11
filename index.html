@@ -110,7 +110,7 @@ body{
 }
 
 .card{
-    height:300px;
+    height:420px;
 
     background:rgba(140, 0, 255, 0.15);
 
@@ -172,20 +172,59 @@ body{
     align-items:center;
     justify-content:center;
 
-    font-size:26px;
+    font-size:28px;
     font-weight:bold;
 
-    margin-bottom:16px;
+    margin-bottom:18px;
 }
 
 .product-title{
-    font-size:24px;
-    margin-bottom:10px;
+    font-size:30px;
+    font-weight:bold;
+
+    margin-bottom:16px;
+
+    color:#d9b3ff;
 }
 
 .product-price{
     color:#c084fc;
+
     font-size:22px;
+
+    line-height:1.5;
+
+    margin-bottom:18px;
+}
+
+/* ---------- ОПИСАНИЕ ---------- */
+
+.info-box{
+    background:rgba(255,255,255,0.05);
+
+    border-radius:14px;
+
+    padding:12px;
+
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.info-box summary{
+    cursor:pointer;
+
+    font-size:18px;
+
+    color:#e0c3ff;
+
+    margin-bottom:10px;
+}
+
+.info-box p{
+    color:#d4d4d4;
+
+    line-height:1.5;
+
+    font-size:16px;
 }
 
 </style>
@@ -215,16 +254,38 @@ body{
     <div class="card">
 
         <div class="product-image">
-            PRODUCT
+            ENERGY
         </div>
 
         <div class="product-title">
-            Gaming Product
+            Енерго масло
         </div>
 
         <div class="product-price">
-            99$
+            1 шт — 5 монет
+            <br>
+            или
+            <br>
+            1 пластина орбистали
         </div>
+
+        <!-- ОТКРЫВАЮЩЕЕСЯ ОПИСАНИЕ -->
+
+        <details class="info-box">
+
+            <summary>
+                Что такое енерго масло ▼
+            </summary>
+
+            <p>
+                Енерго масло ето страная жидкость
+                которая при ее выпивании
+                в первый раз может дать вам способность,
+                или ее можно использовать
+                в крафтах сюжетных предметов.
+            </p>
+
+        </details>
 
     </div>
 
@@ -260,170 +321,3 @@ for(let i = 0; i < 300; i++){
 
 </body>
     </html>
-<div class="card">
-
-    <div class="product-image">
-        ENERGY
-    </div>
-
-    <div class="product-title">
-        Енерго масло
-    </div>
-
-    <div class="product-price">
-        1 шт — 5 монет
-        <br>
-        или
-        <br>
-        1 пластина орбистали
-    </div>
-
-    <!-- ОТКРЫВАЮЩЕЕСЯ ОПИСАНИЕ -->
-
-    <details class="info-box">
-
-        <summary>
-            Что такое енерго масло ▼
-        </summary>
-
-        <p>
-            Енерго масло ето страная жидкость
-            которая при ее выпивании
-            в первый раз может дать вам способность,
-            или ее можно использовать
-            в крафтах сюжетных предметов.
-        </p>
-
-    </details>
-
-</div>
-
-<style>
-
-/* ---------- КАРТОЧКА ---------- */
-
-.card{
-    height:420px;
-
-    background:rgba(140, 0, 255, 0.15);
-
-    border:1px solid rgba(180, 120, 255, 0.4);
-
-    border-radius:24px;
-
-    backdrop-filter:blur(5px);
-
-    box-shadow:
-        0 0 15px rgba(168, 85, 247, 0.25);
-
-    transition:0.2s;
-
-    padding:18px;
-
-    box-sizing:border-box;
-
-    color:white;
-}
-
-/* ---------- АНИМАЦИЯ ---------- */
-
-.card:hover{
-    animation:float 0.9s infinite ease-in-out;
-
-    box-shadow:
-        0 0 25px rgba(168, 85, 247, 0.45);
-}
-
-@keyframes float{
-
-    0%{
-        transform:translateY(0px);
-    }
-
-    50%{
-        transform:translateY(-8px);
-    }
-
-    100%{
-        transform:translateY(0px);
-    }
-}
-
-/* ---------- КАРТИНКА ---------- */
-
-.product-image{
-    width:100%;
-    height:170px;
-
-    border-radius:18px;
-
-    background:linear-gradient(
-        135deg,
-        rgba(180,120,255,0.5),
-        rgba(80,0,150,0.7)
-    );
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:28px;
-    font-weight:bold;
-
-    margin-bottom:18px;
-}
-
-/* ---------- НАЗВАНИЕ ---------- */
-
-.product-title{
-    font-size:30px;
-    font-weight:bold;
-
-    margin-bottom:16px;
-
-    color:#d9b3ff;
-}
-
-/* ---------- ЦЕНА ---------- */
-
-.product-price{
-    color:#c084fc;
-
-    font-size:22px;
-
-    line-height:1.5;
-
-    margin-bottom:18px;
-}
-
-/* ---------- DESCRIPTION ---------- */
-
-.info-box{
-    background:rgba(255,255,255,0.05);
-
-    border-radius:14px;
-
-    padding:12px;
-
-    border:1px solid rgba(255,255,255,0.08);
-}
-
-.info-box summary{
-    cursor:pointer;
-
-    font-size:18px;
-
-    color:#e0c3ff;
-
-    margin-bottom:10px;
-}
-
-.info-box p{
-    color:#d4d4d4;
-
-    line-height:1.5;
-
-    font-size:16px;
-}
-
-    </style>

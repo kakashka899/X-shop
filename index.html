@@ -132,7 +132,7 @@ body{
     color:#d6b3ff;
 }
 
-/* ---------- КРАСИВЫЕ SELECT ---------- */
+/* ---------- УМНЫЙ SELECT ---------- */
 
 .setting{
     margin-bottom:22px;
@@ -156,22 +156,24 @@ body{
 
     width:100%;
 
-    padding:14px 18px;
+    padding:15px 18px;
 
-    border-radius:16px;
+    border-radius:18px;
 
     border:1px solid rgba(180,120,255,0.35);
 
     background:
         linear-gradient(
             135deg,
-            rgba(35,35,35,0.95),
-            rgba(55,20,80,0.95)
+            rgba(22,22,22,0.98),
+            rgba(52,20,78,0.98)
         );
 
-    color:white;
+    color:#f2e7ff;
 
     font-size:16px;
+
+    font-weight:600;
 
     outline:none;
 
@@ -179,51 +181,149 @@ body{
 
     appearance:none;
 
-    transition:0.25s;
+    transition:0.3s;
 
     box-shadow:
-        0 0 10px rgba(168,85,247,0.15);
+        0 0 12px rgba(168,85,247,0.18);
+
+    backdrop-filter:blur(10px);
 }
 
 .custom-select select:hover{
 
-    border-color:#bb66ff;
+    border-color:#c084fc;
 
     box-shadow:
-        0 0 18px rgba(168,85,247,0.35);
+        0 0 22px rgba(168,85,247,0.35);
+
+    transform:translateY(-2px);
 }
 
 .custom-select select:focus{
 
-    border-color:#d18cff;
+    border-color:#d8b4fe;
 
     box-shadow:
-        0 0 22px rgba(168,85,247,0.45);
+        0 0 28px rgba(192,132,252,0.45);
 }
 
 .custom-select::after{
 
-    content:"▼";
+    content:"⌄";
 
     position:absolute;
 
-    right:16px;
+    right:18px;
     top:50%;
 
     transform:translateY(-50%);
 
-    color:#d9b3ff;
+    color:#d8b4fe;
 
     pointer-events:none;
 
-    font-size:14px;
+    font-size:22px;
+
+    transition:0.3s;
+}
+
+.custom-select:hover::after{
+
+    color:white;
 }
 
 .custom-select option{
 
-    background:#1b1b1b;
+    background:#181818;
 
     color:white;
+
+    padding:10px;
+}
+
+/* ---------- SPLIN ТЕМА ---------- */
+
+body.splin-theme .custom-select select{
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(35,20,50,0.98),
+            rgba(90,40,140,0.98)
+        );
+
+    border-color:rgba(210,140,255,0.45);
+
+    box-shadow:
+        0 0 18px rgba(187,102,255,0.35);
+
+    color:#f4dcff;
+}
+
+body.splin-theme .custom-select::after{
+
+    color:#f0bfff;
+}
+
+body.splin-theme .custom-select option{
+
+    background:#2a1438;
+}
+
+/* ---------- WHITE STARS ---------- */
+
+body.white-stars-theme .custom-select select{
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #ececec
+        );
+
+    color:#5b21b6;
+
+    border:1px solid #cfcfcf;
+
+    box-shadow:
+        0 0 10px rgba(0,0,0,0.08);
+}
+
+body.white-stars-theme .custom-select::after{
+
+    color:#6d28d9;
+}
+
+body.white-stars-theme .custom-select option{
+
+    background:white;
+
+    color:black;
+}
+
+/* ---------- PURE WHITE ---------- */
+
+body.pure-white-theme .custom-select select{
+
+    background:white;
+
+    color:#444;
+
+    border:1px solid #d8d8d8;
+
+    box-shadow:none;
+}
+
+body.pure-white-theme .custom-select::after{
+
+    color:#666;
+}
+
+body.pure-white-theme .custom-select option{
+
+    background:white;
+
+    color:black;
 }
 
 /* ---------- КАРТОЧКИ ---------- */
@@ -381,26 +481,6 @@ body{
     color:#6a00ff;
 }
 
-.white-theme .custom-select select{
-
-    background:#f3f3f3;
-
-    color:black;
-
-    border:1px solid #ccc;
-}
-
-.white-theme .custom-select::after{
-    color:#6d28d9;
-}
-
-.white-theme .custom-select option{
-
-    background:white;
-
-    color:black;
-}
-
 </style>
 </head>
 
@@ -429,8 +509,6 @@ body{
 
     <h2>Настройки интерфейса</h2>
 
-    <!-- ПОДСКАЗКИ -->
-
     <div class="setting">
 
         <label>
@@ -454,8 +532,6 @@ body{
         </div>
 
     </div>
-
-    <!-- ФОН -->
 
     <div class="setting">
 
@@ -605,7 +681,12 @@ function toggleHints(value){
 
 function changeTheme(theme){
 
-    document.body.classList.remove("white-theme");
+    document.body.classList.remove(
+        "white-theme",
+        "splin-theme",
+        "white-stars-theme",
+        "pure-white-theme"
+    );
 
     if(theme === "standard"){
 
@@ -618,6 +699,8 @@ function changeTheme(theme){
 
         document.body.style.background = "black";
 
+        document.body.classList.add("splin-theme");
+
         createStars("#bb66ff");
     }
 
@@ -625,7 +708,10 @@ function changeTheme(theme){
 
         document.body.style.background = "white";
 
-        document.body.classList.add("white-theme");
+        document.body.classList.add(
+            "white-theme",
+            "white-stars-theme"
+        );
 
         createStars("black");
     }
@@ -636,7 +722,10 @@ function changeTheme(theme){
 
         document.body.style.background = "white";
 
-        document.body.classList.add("white-theme");
+        document.body.classList.add(
+            "white-theme",
+            "pure-white-theme"
+        );
     }
 }
 

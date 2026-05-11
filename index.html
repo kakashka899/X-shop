@@ -122,6 +122,9 @@ body{
     display:none;
 
     z-index:10;
+
+    box-shadow:
+        0 0 30px rgba(168,85,247,0.25);
 }
 
 .settings-panel h2{
@@ -129,24 +132,97 @@ body{
     color:#d6b3ff;
 }
 
+/* ---------- КРАСИВЫЕ SELECT ---------- */
+
 .setting{
-    margin-bottom:20px;
+    margin-bottom:22px;
 }
 
 .setting label{
     display:block;
-    margin-bottom:10px;
+
+    margin-bottom:12px;
+
+    font-size:18px;
+
+    color:#d9b3ff;
 }
 
-select,
-input{
+.custom-select{
+    position:relative;
+}
+
+.custom-select select{
+
     width:100%;
-    padding:10px;
 
-    border-radius:10px;
-    border:none;
+    padding:14px 18px;
 
-    background:#222;
+    border-radius:16px;
+
+    border:1px solid rgba(180,120,255,0.35);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(35,35,35,0.95),
+            rgba(55,20,80,0.95)
+        );
+
+    color:white;
+
+    font-size:16px;
+
+    outline:none;
+
+    cursor:pointer;
+
+    appearance:none;
+
+    transition:0.25s;
+
+    box-shadow:
+        0 0 10px rgba(168,85,247,0.15);
+}
+
+.custom-select select:hover{
+
+    border-color:#bb66ff;
+
+    box-shadow:
+        0 0 18px rgba(168,85,247,0.35);
+}
+
+.custom-select select:focus{
+
+    border-color:#d18cff;
+
+    box-shadow:
+        0 0 22px rgba(168,85,247,0.45);
+}
+
+.custom-select::after{
+
+    content:"▼";
+
+    position:absolute;
+
+    right:16px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#d9b3ff;
+
+    pointer-events:none;
+
+    font-size:14px;
+}
+
+.custom-select option{
+
+    background:#1b1b1b;
+
     color:white;
 }
 
@@ -305,6 +381,26 @@ input{
     color:#6a00ff;
 }
 
+.white-theme .custom-select select{
+
+    background:#f3f3f3;
+
+    color:black;
+
+    border:1px solid #ccc;
+}
+
+.white-theme .custom-select::after{
+    color:#6d28d9;
+}
+
+.white-theme .custom-select option{
+
+    background:white;
+
+    color:black;
+}
+
 </style>
 </head>
 
@@ -341,15 +437,21 @@ input{
             Подсказки
         </label>
 
-        <select onchange="toggleHints(this.value)">
-            <option value="on">
-                Включены
-            </option>
+        <div class="custom-select">
 
-            <option value="off">
-                Выключены
-            </option>
-        </select>
+            <select onchange="toggleHints(this.value)">
+
+                <option value="on">
+                    Включены
+                </option>
+
+                <option value="off">
+                    Выключены
+                </option>
+
+            </select>
+
+        </div>
 
     </div>
 
@@ -361,25 +463,29 @@ input{
             Фон
         </label>
 
-        <select onchange="changeTheme(this.value)">
+        <div class="custom-select">
 
-            <option value="standard">
-                Стандартный
-            </option>
+            <select onchange="changeTheme(this.value)">
 
-            <option value="splin">
-                splin
-            </option>
+                <option value="standard">
+                    Стандартный
+                </option>
 
-            <option value="white-stars">
-                Белый
-            </option>
+                <option value="splin">
+                    splin
+                </option>
 
-            <option value="pure-white">
-                👎просто белый👎
-            </option>
+                <option value="white-stars">
+                    Белый
+                </option>
 
-        </select>
+                <option value="pure-white">
+                    👎просто белый👎
+                </option>
+
+            </select>
+
+        </div>
 
     </div>
 
@@ -431,8 +537,6 @@ input{
 <script>
 
 const starsContainer = document.getElementById("stars");
-
-let currentTheme = "standard";
 
 /* ---------- СОЗДАНИЕ ЗВЕЗД ---------- */
 
@@ -500,8 +604,6 @@ function toggleHints(value){
 /* ---------- ТЕМЫ ---------- */
 
 function changeTheme(theme){
-
-    currentTheme = theme;
 
     document.body.classList.remove("white-theme");
 

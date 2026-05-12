@@ -12,15 +12,15 @@ body{margin:0;font-family:Arial;background:#000;color:#fff;overflow:auto;transit
 .menu{position:absolute;top:115px;left:40px;display:flex;flex-direction:column;gap:18px;z-index:2}
 .menu button{background:none;border:none;color:#d6b3ff;font-size:22px;cursor:pointer;text-align:left;transition:.2s}.menu button:hover{transform:translateX(5px);color:#fff}
 .panel{position:absolute;left:220px;width:320px;padding:20px;border-radius:22px;background:rgba(20,20,20,.96);border:1px solid rgba(180,120,255,.35);display:none;z-index:20;backdrop-filter:blur(10px)}
-.panel h2{margin-top:0;color:#d8b4fe}#settingsPanel{top:100px}#loginPanel{top:360px}#newsPanel{top:220px}
+.panel h2{margin-top:0;color:#d8b4fe}#settingsPanel{top:100px}#loginPanel{top:360px}
 .cards{position:absolute;top:120px;right:30px;width:72%;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding-bottom:80px;z-index:2}
-.card{background:rgba(140,0,255,.15);border:1px solid rgba(180,120,255,.35);border-radius:24px;padding:18px;display:flex;flex-direction:column;min-height:560px;backdrop-filter:blur(5px);box-shadow:0 0 15px rgba(168,85,247,.2);transition:.2s;opacity:0;transform:translateY(50px);animation:cardShow .8s forwards}
+.card{background:rgba(140,0,255,.15);border:1px solid rgba(180,120,255,.35);border-radius:24px;padding:18px;display:flex;flex-direction:column;min-height:420px;backdrop-filter:blur(5px);box-shadow:0 0 15px rgba(168,85,247,.2);transition:.2s;opacity:0;transform:translateY(50px);animation:cardShow .8s forwards}
 .card:nth-child(2){animation-delay:.15s}.card:nth-child(3){animation-delay:.3s}.card:nth-child(4){animation-delay:.45s}@keyframes cardShow{to{opacity:1;transform:translateY(0)}}
-.card:hover{transform:translateY(-5px)}.product-image{height:170px;border-radius:18px;background:linear-gradient(135deg,rgba(180,120,255,.5),rgba(80,0,150,.7));display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:bold;margin-bottom:18px}
+.card:hover{transform:translateY(-5px);box-shadow:0 0 25px rgba(200,120,255,.5),0 0 40px rgba(120,0,255,.25)}.product-image{height:170px;border-radius:18px;background:linear-gradient(135deg,rgba(180,120,255,.5),rgba(80,0,150,.7));display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:bold;margin-bottom:18px}
 .product-title{font-size:30px;font-weight:bold;margin-bottom:15px;color:#d9b3ff}.product-price{font-size:22px;line-height:1.5;color:#c084fc;margin-bottom:18px}
 .info-box{background:rgba(255,255,255,.05);border-radius:14px;padding:12px;margin-top:auto;border:1px solid rgba(255,255,255,.08)}
 .info-box summary{list-style:none;cursor:pointer;display:flex;gap:10px;font-size:18px;color:#e0c3ff}.info-box summary::-webkit-details-marker{display:none}.arrow{transition:.2s}.info-box[open] .arrow{transform:rotate(90deg)}
-.particle{position:fixed;width:6px;height:6px;border-radius:50%;background:#c084fc;pointer-events:none;animation:fade .8s linear forwards;z-index:999}@keyframes fade{to{opacity:0;transform:translateY(-40px)}}
+.particle{position:fixed;width:var(--s);height:var(--s);border-radius:50%;background:var(--c);pointer-events:none;animation:fade 1s linear forwards;z-index:999;filter:blur(.5px)}@keyframes fade{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:translateY(-50px) scale(.2)}}
 .white-theme{background:#fff;color:#000}.white-theme .card{background:#f1f1f1;border:1px solid #ccc}.white-theme .panel{background:#fff;color:#000;border:1px solid #ccc}.white-theme input,.white-theme select{background:#fff;color:#000}.white-theme .menu button{color:#6d28d9}
 </style>
 </head>
@@ -29,7 +29,7 @@ body{margin:0;font-family:Arial;background:#000;color:#fff;overflow:auto;transit
 <div class="logo">X shop</div>
 <div class="top-bar"><input type="text" id="searchInput" placeholder="Поиск товара..." onkeyup="searchProducts()"></div>
 <div class="menu">
-<button onclick="togglePanel('newsPanel');playClick()">Новости</button>
+
 <button onclick="togglePanel('settingsPanel');playClick()">Настройки</button>
 <button onclick="togglePanel('loginPanel');playClick()">Логин</button>
 </div>
@@ -41,7 +41,7 @@ body{margin:0;font-family:Arial;background:#000;color:#fff;overflow:auto;transit
 <select id="particlesSelect" onchange="toggleParticles(this.value)"><option value="on">Частицы включены</option><option value="off">Частицы выключены</option></select>
 </div>
 <div class="panel" id="loginPanel"><h2>Вход</h2><input type="text" id="nickname" placeholder="Ник"><input type="password" id="password" placeholder="Пароль"><button onclick="saveAccount();playClick()">Войти</button></div>
-<div class="panel" id="newsPanel"><h2>Новости XShop</h2><div>Всем хай ето XShop крутой магазин (наверное)</div></div>
+
 <div class="cards">
 <div class="card"><div class="product-image">ENERGY</div><div class="product-title">Енерго масло</div><div class="product-price">Цена:<br>1 шт — 5 монет<br>или<br>1 пластина орбистали</div><details class="info-box hint-box"><summary><span class="arrow">></span>Что такое енерго масло?</summary><p>Енерго масло — странная жидкость, которая может дать способность.</p></details></div>
 <div class="card"><div class="product-image">LOGIC</div><div class="product-title">Логический чип</div><div class="product-price">Цена:<br>1 шт — 15 монет<br>или<br>3 пластины орбистали</div><details class="info-box hint-box"><summary><span class="arrow">></span>Что такое Логический чип?</summary><p>Можно использовать в крафтах и ракетостроении.</p></details></div>
@@ -63,10 +63,10 @@ function toggleMusic(v){localStorage.setItem('xshop_music',v);v==='off'?music.pa
 function playClick(){clickSound.currentTime=0;clickSound.play()}
 music.volume=.3;clickSound.volume=.5;
 document.body.addEventListener('click',()=>music.play(),{once:true});
-function createParticle(x,y){if(!particles)return;let p=document.createElement('div');p.className='particle';p.style.left=x+'px';p.style.top=y+'px';document.body.appendChild(p);setTimeout(()=>p.remove(),800)}
+function createParticle(x,y){if(!particles)return;let p=document.createElement('div');let colors=['#c084fc','#ffffff','#a855f7','#7c3aed'];p.className='particle';p.style.setProperty('--c',colors[Math.floor(Math.random()*colors.length)]);p.style.setProperty('--s',Math.random()*8+3+'px');p.style.left=x+'px';p.style.top=y+'px';document.body.appendChild(p);setTimeout(()=>p.remove(),1000)}
 document.addEventListener('mousemove',e=>{if(Math.random()>.85)createParticle(e.clientX,e.clientY)});
 document.querySelectorAll('.card').forEach(c=>{c.addEventListener('mousemove',e=>createParticle(e.clientX,e.clientY))});
 window.onload=()=>{nickname.value=localStorage.getItem('xshop_nick')||'';password.value=localStorage.getItem('xshop_pass')||'';let t=localStorage.getItem('xshop_theme');if(t){changeTheme(t);themeSelect.value=t}let h=localStorage.getItem('xshop_hints');if(h){toggleHints(h);hintsSelect.value=h}if(localStorage.getItem('xshop_music')==='off')music.pause();let p=localStorage.getItem('xshop_particles');if(p){toggleParticles(p);particlesSelect.value=p}}
 </script>
 </body>
-</html>
+  </html>

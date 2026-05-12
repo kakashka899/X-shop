@@ -65,6 +65,131 @@ body{
     z-index:2;
 }
 
+/* ---------- ВЕРХНЯЯ ПАНЕЛЬ ---------- */
+
+.top-bar{
+
+    position:absolute;
+
+    top:25px;
+    right:30px;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+    z-index:5;
+}
+
+/* ---------- ПОИСК ---------- */
+
+#searchInput{
+
+    width:260px;
+
+    padding:14px 18px;
+
+    border-radius:18px;
+
+    border:1px solid rgba(180,120,255,0.35);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(22,22,22,0.95),
+            rgba(52,20,78,0.95)
+        );
+
+    color:white;
+
+    outline:none;
+
+    font-size:16px;
+
+    transition:0.3s;
+
+    box-shadow:
+        0 0 14px rgba(168,85,247,0.18);
+}
+
+#searchInput:focus{
+
+    border-color:#d8b4fe;
+
+    box-shadow:
+        0 0 24px rgba(192,132,252,0.35);
+}
+
+/* ---------- АККАУНТ ---------- */
+
+.account-box{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.account-box input{
+
+    width:140px;
+
+    padding:12px 14px;
+
+    border-radius:16px;
+
+    border:1px solid rgba(180,120,255,0.35);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(22,22,22,0.95),
+            rgba(52,20,78,0.95)
+        );
+
+    color:white;
+
+    outline:none;
+
+    font-size:15px;
+
+    transition:0.3s;
+}
+
+.account-box button{
+
+    padding:12px 18px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #a855f7
+        );
+
+    color:white;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    box-shadow:
+        0 0 16px rgba(168,85,247,0.28);
+}
+
+.account-box button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 0 24px rgba(168,85,247,0.45);
+}
+
 /* ---------- МЕНЮ ---------- */
 
 .menu{
@@ -111,7 +236,7 @@ body{
 
     width:320px;
 
-    background:rgba(20,20,20,0.95);
+    background:rgba(20,20,20,0.96);
 
     border:1px solid rgba(180,120,255,0.4);
 
@@ -125,6 +250,8 @@ body{
 
     box-shadow:
         0 0 30px rgba(168,85,247,0.25);
+
+    backdrop-filter:blur(10px);
 }
 
 .settings-panel h2{
@@ -182,29 +309,6 @@ body{
     appearance:none;
 
     transition:0.3s;
-
-    box-shadow:
-        0 0 12px rgba(168,85,247,0.18);
-
-    backdrop-filter:blur(10px);
-}
-
-.custom-select select:hover{
-
-    border-color:#c084fc;
-
-    box-shadow:
-        0 0 22px rgba(168,85,247,0.35);
-
-    transform:translateY(-2px);
-}
-
-.custom-select select:focus{
-
-    border-color:#d8b4fe;
-
-    box-shadow:
-        0 0 28px rgba(192,132,252,0.45);
 }
 
 .custom-select::after{
@@ -232,44 +336,11 @@ body{
     color:white;
 }
 
-/* ---------- ТЕМЫ ---------- */
-
-body.splin-theme .custom-select select{
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(35,20,50,0.98),
-            rgba(90,40,140,0.98)
-        );
-
-    color:#f4dcff;
-}
-
-body.white-stars-theme .custom-select select{
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffffff,
-            #ececec
-        );
-
-    color:#5b21b6;
-}
-
-body.pure-white-theme .custom-select select{
-
-    background:white;
-
-    color:#444;
-}
-
 /* ---------- КАРТОЧКИ ---------- */
 
 .cards{
     position:absolute;
-    top:60px;
+    top:120px;
     right:30px;
 
     width:72%;
@@ -410,14 +481,22 @@ body.pure-white-theme .custom-select select{
     font-size:15px;
 
     margin-top:14px;
-
-    word-wrap:break-word;
 }
 
 /* ---------- БЕЛЫЕ ТЕМЫ ---------- */
 
 .white-theme{
     background:white;
+    color:black;
+}
+
+.white-theme .menu a,
+.white-theme .menu button{
+    color:#6d28d9;
+}
+
+.white-theme .menu a:hover,
+.white-theme .menu button:hover{
     color:black;
 }
 
@@ -434,6 +513,52 @@ body.pure-white-theme .custom-select select{
     color:#6a00ff;
 }
 
+.white-theme #searchInput,
+.white-theme .account-box input,
+.white-theme .custom-select select{
+
+    background:white;
+
+    color:black;
+
+    border:1px solid #ccc;
+}
+
+.white-theme .account-box button{
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #a855f7
+        );
+
+    color:white;
+}
+
+.white-theme .settings-panel{
+
+    background:rgba(255,255,255,0.96);
+
+    border:1px solid #ccc;
+}
+
+.white-theme .settings-panel h2,
+.white-theme .setting label{
+
+    color:#6d28d9;
+}
+
+.white-theme .info-box{
+
+    background:#e9e9e9;
+}
+
+.white-theme .info-box p{
+
+    color:black;
+}
+
 </style>
 </head>
 
@@ -443,11 +568,43 @@ body.pure-white-theme .custom-select select{
 
 <div class="logo">X shop</div>
 
+<!-- ВЕРХ -->
+
+<div class="top-bar">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Поиск товара..."
+        onkeyup="searchProducts()"
+    >
+
+    <div class="account-box">
+
+        <input
+            type="text"
+            id="nickname"
+            placeholder="Ник"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Пароль"
+        >
+
+        <button onclick="saveAccount()">
+            Сохранить
+        </button>
+
+    </div>
+
+</div>
+
 <!-- МЕНЮ -->
 
 <div class="menu">
     <a href="#">Главная</a>
-    <a href="#">Товары</a>
     <a href="#">Контакты</a>
     <a href="#">Отзывы</a>
 
@@ -500,6 +657,10 @@ body.pure-white-theme .custom-select select{
                     Стандартный
                 </option>
 
+                <option value="dark">
+                    Темный
+                </option>
+
                 <option value="splin">
                     splin
                 </option>
@@ -524,8 +685,6 @@ body.pure-white-theme .custom-select select{
 
 <div class="cards">
 
-    <!-- ЕНЕРГО МАСЛО -->
-
     <div class="card">
 
         <div class="product-image">
@@ -539,7 +698,7 @@ body.pure-white-theme .custom-select select{
         <div class="product-price">
             Цена:
             <br>
-            1 шт — 6 монет
+            1 шт — 5 монет
             <br>
             или
             <br>
@@ -564,8 +723,6 @@ body.pure-white-theme .custom-select select{
         </details>
 
     </div>
-
-    <!-- ЛОГИЧЕСКИЙ ЧИП -->
 
     <div class="card">
 
@@ -604,8 +761,6 @@ body.pure-white-theme .custom-select select{
         </details>
 
     </div>
-
-    <!-- ВЫЧИСЛИТЕЛЬНЫЙ ЧИП -->
 
     <div class="card">
 
@@ -646,8 +801,6 @@ body.pure-white-theme .custom-select select{
         </details>
 
     </div>
-
-    <!-- ЧИП ХРАНИЛИЩА -->
 
     <div class="card">
 
@@ -694,7 +847,7 @@ body.pure-white-theme .custom-select select{
 
 const starsContainer = document.getElementById("stars");
 
-/* ---------- СОЗДАНИЕ ЗВЕЗД ---------- */
+/* ---------- ЗВЕЗДЫ ---------- */
 
 function createStars(color = "white"){
 
@@ -732,11 +885,10 @@ function toggleSettings(){
     const panel =
         document.getElementById("settingsPanel");
 
-    if(panel.style.display === "block"){
-        panel.style.display = "none";
-    }else{
-        panel.style.display = "block";
-    }
+    panel.style.display =
+        panel.style.display === "block"
+        ? "none"
+        : "block";
 }
 
 /* ---------- ПОДСКАЗКИ ---------- */
@@ -748,24 +900,82 @@ function toggleHints(value){
 
     hints.forEach(hint => {
 
-        if(value === "off"){
-            hint.style.display = "none";
-        }else{
-            hint.style.display = "block";
-        }
-
+        hint.style.display =
+            value === "off"
+            ? "none"
+            : "block";
     });
 }
+
+/* ---------- ПОИСК ---------- */
+
+function searchProducts(){
+
+    let input =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    let cards =
+        document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+
+        let title =
+            card.querySelector(".product-title")
+            .innerText
+            .toLowerCase();
+
+        card.style.display =
+            title.includes(input)
+            ? "flex"
+            : "none";
+    });
+}
+
+/* ---------- СОХРАНЕНИЕ АККА ---------- */
+
+function saveAccount(){
+
+    let nick =
+        document.getElementById("nickname").value;
+
+    let pass =
+        document.getElementById("password").value;
+
+    localStorage.setItem("xshop_nick", nick);
+    localStorage.setItem("xshop_pass", pass);
+
+    alert("Аккаунт сохранен!");
+}
+
+/* ---------- ЗАГРУЗКА ---------- */
+
+window.onload = function(){
+
+    let savedNick =
+        localStorage.getItem("xshop_nick");
+
+    let savedPass =
+        localStorage.getItem("xshop_pass");
+
+    if(savedNick){
+        document.getElementById("nickname").value =
+            savedNick;
+    }
+
+    if(savedPass){
+        document.getElementById("password").value =
+            savedPass;
+    }
+};
 
 /* ---------- ТЕМЫ ---------- */
 
 function changeTheme(theme){
 
     document.body.classList.remove(
-        "white-theme",
-        "splin-theme",
-        "white-stars-theme",
-        "pure-white-theme"
+        "white-theme"
     );
 
     if(theme === "standard"){
@@ -775,41 +985,40 @@ function changeTheme(theme){
         createStars("white");
     }
 
+    if(theme === "dark"){
+
+        document.body.style.background = "#0f0f0f";
+
+        createStars("#444");
+    }
+
     if(theme === "splin"){
 
         document.body.style.background = "black";
-
-        document.body.classList.add("splin-theme");
 
         createStars("#bb66ff");
     }
 
     if(theme === "white-stars"){
 
-        document.body.style.background = "white";
+        document.body.classList.add("white-theme");
 
-        document.body.classList.add(
-            "white-theme",
-            "white-stars-theme"
-        );
+        document.body.style.background = "white";
 
         createStars("black");
     }
 
     if(theme === "pure-white"){
 
+        document.body.classList.add("white-theme");
+
         starsContainer.innerHTML = "";
 
         document.body.style.background = "white";
-
-        document.body.classList.add(
-            "white-theme",
-            "pure-white-theme"
-        );
     }
 }
 
 </script>
 
 </body>
-        </html>
+    </html>

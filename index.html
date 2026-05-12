@@ -65,7 +65,103 @@ body{
     z-index:2;
 }
 
-/* ---------- ВЕРХНЯЯ ПАНЕЛЬ ---------- */
+/* ---------- ПРОФИЛЬ ---------- */
+
+.profile-box{
+
+    position:absolute;
+
+    top:25px;
+    left:340px;
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    padding:10px 16px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(25,25,25,0.95),
+            rgba(60,20,90,0.95)
+        );
+
+    border:1px solid rgba(180,120,255,0.3);
+
+    z-index:5;
+
+    box-shadow:
+        0 0 18px rgba(168,85,247,0.2);
+}
+
+.avatar{
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #c084fc
+        );
+
+    font-weight:bold;
+    font-size:22px;
+}
+
+.profile-info{
+
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.coins{
+
+    color:#d8b4fe;
+}
+
+/* ---------- КОРЗИНА ---------- */
+
+.cart-box{
+
+    position:fixed;
+
+    top:30px;
+    right:320px;
+
+    padding:14px 22px;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(25,25,25,0.95),
+            rgba(60,20,90,0.95)
+        );
+
+    border:1px solid rgba(180,120,255,0.3);
+
+    z-index:10;
+
+    font-size:18px;
+
+    box-shadow:
+        0 0 20px rgba(168,85,247,0.2);
+}
+
+/* ---------- ПОИСК ---------- */
 
 .top-bar{
 
@@ -74,14 +170,8 @@ body{
     top:25px;
     right:30px;
 
-    display:flex;
-    align-items:center;
-    gap:18px;
-
     z-index:5;
 }
-
-/* ---------- ПОИСК ---------- */
 
 #searchInput{
 
@@ -110,14 +200,6 @@ body{
 
     box-shadow:
         0 0 14px rgba(168,85,247,0.18);
-}
-
-#searchInput:focus{
-
-    border-color:#d8b4fe;
-
-    box-shadow:
-        0 0 24px rgba(192,132,252,0.35);
 }
 
 /* ---------- МЕНЮ ---------- */
@@ -156,7 +238,7 @@ body{
     transform:translateX(6px);
 }
 
-/* ---------- НАСТРОЙКИ ---------- */
+/* ---------- SETTINGS ---------- */
 
 .settings-panel{
     position:absolute;
@@ -196,7 +278,7 @@ body{
     position:absolute;
 
     left:220px;
-    top:340px;
+    top:390px;
 
     width:300px;
 
@@ -277,16 +359,6 @@ body{
     font-size:16px;
 
     cursor:pointer;
-
-    transition:0.3s;
-}
-
-.login-panel button:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 0 22px rgba(168,85,247,0.4);
 }
 
 /* ---------- SELECT ---------- */
@@ -297,11 +369,8 @@ body{
 
 .setting label{
     display:block;
-
     margin-bottom:12px;
-
     font-size:18px;
-
     color:#d9b3ff;
 }
 
@@ -337,33 +406,6 @@ body{
     cursor:pointer;
 
     appearance:none;
-
-    transition:0.3s;
-}
-
-.custom-select::after{
-
-    content:"⌄";
-
-    position:absolute;
-
-    right:18px;
-    top:50%;
-
-    transform:translateY(-50%);
-
-    color:#d8b4fe;
-
-    pointer-events:none;
-
-    font-size:22px;
-}
-
-.custom-select option{
-
-    background:#181818;
-
-    color:white;
 }
 
 /* ---------- КАРТОЧКИ ---------- */
@@ -382,11 +424,11 @@ body{
 
     z-index:2;
 
-    padding-bottom:50px;
+    padding-bottom:80px;
 }
 
 .card{
-    min-height:520px;
+    min-height:560px;
 
     background:rgba(140, 0, 255, 0.15);
 
@@ -414,9 +456,6 @@ body{
 
 .card:hover{
     transform:translateY(-3px);
-
-    box-shadow:
-        0 0 25px rgba(168, 85, 247, 0.45);
 }
 
 /* ---------- ТОВАР ---------- */
@@ -462,6 +501,42 @@ body{
     margin-bottom:18px;
 }
 
+/* ---------- КНОПКА ---------- */
+
+.buy-btn{
+
+    margin-top:18px;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #a855f7
+        );
+
+    color:white;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    transition:0.2s;
+}
+
+.buy-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 0 18px rgba(168,85,247,0.45);
+}
+
 /* ---------- ОПИСАНИЕ ---------- */
 
 .info-box{
@@ -474,8 +549,6 @@ body{
     border:1px solid rgba(255,255,255,0.08);
 
     margin-top:auto;
-
-    overflow:hidden;
 }
 
 .info-box summary{
@@ -503,17 +576,101 @@ body{
     transform:rotate(90deg);
 }
 
-.info-box p{
-    color:#d4d4d4;
+/* ---------- ПРОМО ---------- */
 
-    line-height:1.5;
+.promo-box{
 
-    font-size:15px;
+    position:fixed;
 
-    margin-top:14px;
+    bottom:25px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+    gap:10px;
+
+    z-index:10;
 }
 
-/* ---------- БЕЛЫЕ ТЕМЫ ---------- */
+.promo-box input{
+
+    width:220px;
+
+    padding:14px 16px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(25,25,25,0.95),
+            rgba(60,20,90,0.95)
+        );
+
+    color:white;
+
+    outline:none;
+
+    border:1px solid rgba(180,120,255,0.3);
+}
+
+.promo-box button{
+
+    padding:14px 20px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #a855f7
+        );
+
+    color:white;
+
+    cursor:pointer;
+}
+
+/* ---------- ЭФФЕКТЫ ---------- */
+
+.particle{
+
+    position:fixed;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#c084fc;
+
+    pointer-events:none;
+
+    animation:particleMove 1s linear forwards;
+
+    z-index:999;
+}
+
+@keyframes particleMove{
+
+    0%{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+    100%{
+        opacity:0;
+        transform:translateY(-80px);
+    }
+}
+
+/* ---------- БЕЛАЯ ТЕМА ---------- */
 
 .white-theme{
     background:white;
@@ -525,64 +682,29 @@ body{
     color:#6d28d9;
 }
 
-.white-theme .menu a:hover,
-.white-theme .menu button:hover{
-    color:black;
-}
-
 .white-theme .card{
     background:#f1f1f1;
     border:1px solid #ccc;
 }
 
-.white-theme .product-title{
-    color:#7b2cff;
-}
-
-.white-theme .product-price{
-    color:#6a00ff;
-}
-
-.white-theme #searchInput,
-.white-theme .login-panel input,
-.white-theme .custom-select select{
+.white-theme .settings-panel,
+.white-theme .login-panel,
+.white-theme .profile-box,
+.white-theme .cart-box,
+.white-theme .promo-box input{
 
     background:white;
 
-    color:black;
-
     border:1px solid #ccc;
-}
-
-.white-theme .settings-panel{
-
-    background:rgba(255,255,255,0.96);
-
-    border:1px solid #ccc;
-}
-
-.white-theme .login-panel{
-
-    background:rgba(255,255,255,0.96);
-
-    border:1px solid #ccc;
-}
-
-.white-theme .settings-panel h2,
-.white-theme .setting label,
-.white-theme .login-panel h2{
-
-    color:#6d28d9;
-}
-
-.white-theme .info-box{
-
-    background:#e9e9e9;
-}
-
-.white-theme .info-box p{
 
     color:black;
+}
+
+.white-theme input,
+.white-theme select{
+
+    background:white !important;
+    color:black !important;
 }
 
 </style>
@@ -593,6 +715,39 @@ body{
 <div class="stars" id="stars"></div>
 
 <div class="logo">X shop</div>
+
+<!-- ПРОФИЛЬ -->
+
+<div class="profile-box">
+
+    <div class="avatar">
+        X
+    </div>
+
+    <div class="profile-info">
+
+        <div id="profileNick">
+            Гость
+        </div>
+
+        <div class="coins">
+            🪙 250
+        </div>
+
+    </div>
+
+</div>
+
+<!-- КОРЗИНА -->
+
+<div class="cart-box">
+
+    🛒 Корзина:
+    <span id="cartCount">
+        0
+    </span>
+
+</div>
 
 <!-- ПОИСК -->
 
@@ -614,6 +769,7 @@ body{
     <a href="#">Главная</a>
     <a href="#">Контакты</a>
     <a href="#">Отзывы</a>
+    <a href="#">Новости</a>
 
     <button onclick="toggleSettings()">
         Настройки
@@ -625,7 +781,7 @@ body{
 
 </div>
 
-<!-- НАСТРОЙКИ -->
+<!-- SETTINGS -->
 
 <div class="settings-panel" id="settingsPanel">
 
@@ -697,6 +853,30 @@ body{
 
     </div>
 
+    <div class="setting">
+
+        <label>
+            Музыка
+        </label>
+
+        <div class="custom-select">
+
+            <select onchange="toggleMusic(this.value)">
+
+                <option value="on">
+                    Включена
+                </option>
+
+                <option value="off">
+                    Выключена
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
 </div>
 
 <!-- LOGIN -->
@@ -723,9 +903,11 @@ body{
 
 </div>
 
-<!-- КАРТОЧКИ -->
+<!-- ТОВАРЫ -->
 
 <div class="cards">
+
+    <!-- 1 -->
 
     <div class="card">
 
@@ -747,6 +929,13 @@ body{
             1 пластина орбистали
         </div>
 
+        <button
+            class="buy-btn"
+            onclick="addToCart(this)"
+        >
+            Купить
+        </button>
+
         <details class="info-box hint-box">
 
             <summary>
@@ -755,16 +944,16 @@ body{
             </summary>
 
             <p>
-                Енерго масло ето страная жидкость
-                которая при ее выпивании
-                в первый раз может дать вам способность,
-                или ее можно использовать
-                в крафтах сюжетных предметов.
+                Енерго масло —
+                странная жидкость,
+                которая может дать способность.
             </p>
 
         </details>
 
     </div>
+
+    <!-- 2 -->
 
     <div class="card">
 
@@ -786,6 +975,13 @@ body{
             4 пластины орбистали
         </div>
 
+        <button
+            class="buy-btn"
+            onclick="addToCart(this)"
+        >
+            Купить
+        </button>
+
         <details class="info-box hint-box">
 
             <summary>
@@ -794,15 +990,16 @@ body{
             </summary>
 
             <p>
-                "Логический чип"
-                можно использовать
-                в крафтах и в создании
-                ракетостроений.
+                Используется
+                в крафтах
+                и ракетостроении.
             </p>
 
         </details>
 
     </div>
+
+    <!-- 3 -->
 
     <div class="card">
 
@@ -824,6 +1021,13 @@ body{
             4 пластины орбистали
         </div>
 
+        <button
+            class="buy-btn"
+            onclick="addToCart(this)"
+        >
+            Купить
+        </button>
+
         <details class="info-box hint-box">
 
             <summary>
@@ -832,51 +1036,9 @@ body{
             </summary>
 
             <p>
-                "Вычислительный чип"
-                или же "чип взрыва"
-                можно использовать
-                в создании ракетостроений.
-                Дает слот для взрывчатки
-                в ракету.
-            </p>
-
-        </details>
-
-    </div>
-
-    <div class="card">
-
-        <div class="product-image">
-            STORAGE
-        </div>
-
-        <div class="product-title">
-            Чип хранилища
-        </div>
-
-        <div class="product-price">
-            Цена:
-            <br>
-            25 монет
-            <br>
-            или
-            <br>
-            4 пластины орбистали
-        </div>
-
-        <details class="info-box hint-box">
-
-            <summary>
-                <span class="arrow">></span>
-                Что такое Чип хранилища?
-            </summary>
-
-            <p>
-                "Чип хранилища"
-                можно использовать
-                в создании ракетостроений.
-                Дает слот для груза
-                в ракету.
+                Дает слот
+                для взрывчатки
+                в ракете.
             </p>
 
         </details>
@@ -884,6 +1046,35 @@ body{
     </div>
 
 </div>
+
+<!-- ПРОМО -->
+
+<div class="promo-box">
+
+    <input
+        type="text"
+        id="promoInput"
+        placeholder="Промокод..."
+    >
+
+    <button onclick="activatePromo()">
+        Активировать
+    </button>
+
+</div>
+
+<!-- МУЗЫКА -->
+
+<audio
+    id="bgMusic"
+    loop
+>
+
+<source
+src="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a73467.mp3"
+type="audio/mpeg">
+
+</audio>
 
 <script>
 
@@ -926,7 +1117,7 @@ function createStars(color = "white"){
 
 createStars();
 
-/* ---------- SETTINGS ---------- */
+/* ---------- ПАНЕЛИ ---------- */
 
 function toggleSettings(){
 
@@ -938,8 +1129,6 @@ function toggleSettings(){
         ? "none"
         : "block";
 }
-
-/* ---------- LOGIN ---------- */
 
 function toggleLogin(){
 
@@ -999,7 +1188,7 @@ function searchProducts(){
     });
 }
 
-/* ---------- СОХРАНЕНИЕ АККА ---------- */
+/* ---------- АККАУНТ ---------- */
 
 function saveAccount(){
 
@@ -1018,6 +1207,10 @@ function saveAccount(){
         "xshop_pass",
         pass
     );
+
+    document.getElementById(
+        "profileNick"
+    ).innerText = nick;
 
     alert("Аккаунт сохранен!");
 }
@@ -1084,54 +1277,69 @@ function changeTheme(theme){
     }
 }
 
-/* ---------- ЗАГРУЗКА ---------- */
+/* ---------- КОРЗИНА ---------- */
 
-window.onload = function(){
+let cart = 0;
 
-    let savedNick =
-        localStorage.getItem("xshop_nick");
+function addToCart(button){
 
-    let savedPass =
-        localStorage.getItem("xshop_pass");
+    cart++;
 
-    if(savedNick){
+    document.getElementById(
+        "cartCount"
+    ).innerText = cart;
 
-        document.getElementById("nickname").value =
-            savedNick;
-    }
+    const rect =
+        button.getBoundingClientRect();
 
-    if(savedPass){
+    let fly =
+        document.createElement("div");
 
-        document.getElementById("password").value =
-            savedPass;
-    }
+    fly.innerHTML = "🛒";
 
-    let savedTheme =
-        localStorage.getItem("xshop_theme");
+    fly.style.position = "fixed";
+    fly.style.left = rect.left + "px";
+    fly.style.top = rect.top + "px";
 
-    if(savedTheme){
+    fly.style.fontSize = "28px";
 
-        changeTheme(savedTheme);
+    fly.style.zIndex = "999";
 
+    fly.style.transition =
+        "all 0.7s ease";
+
+    document.body.appendChild(fly);
+
+    setTimeout(()=>{
+
+        fly.style.left = "88%";
+        fly.style.top = "30px";
+        fly.style.opacity = "0";
+
+    },10);
+
+    setTimeout(()=>{
+
+        fly.remove();
+
+    },800);
+
+    createParticles(
+        rect.left,
+        rect.top
+    );
+}
+
+/* ---------- ПРОМО ---------- */
+
+function activatePromo(){
+
+    let code =
         document.getElementById(
-            "themeSelect"
-        ).value = savedTheme;
-    }
+            "promoInput"
+        ).value.toLowerCase();
 
-    let savedHints =
-        localStorage.getItem("xshop_hints");
+    if(code === "xshop"){
 
-    if(savedHints){
-
-        toggleHints(savedHints);
-
-        document.getElementById(
-            "hintsSelect"
-        ).value = savedHints;
-    }
-};
-
-</script>
-
-</body>
-    </html>
+        alert(
+            "Промокод активирован! 

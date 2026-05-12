@@ -8,758 +8,269 @@
 <style>
 
 body{
-    margin:0;
-    overflow:auto;
-    font-family:Arial,sans-serif;
-    color:white;
-    background:black;
-    transition:0.3s;
+margin:0;
+font-family:Arial;
+background:black;
+color:white;
+overflow:auto;
+transition:.3s;
 }
 
-/* ---------- ФОН ---------- */
-
 .stars{
-    position:fixed;
-    width:100%;
-    height:100%;
-    z-index:0;
+position:fixed;
+width:100%;
+height:100%;
+z-index:0;
 }
 
 .star{
-    position:absolute;
-    border-radius:50%;
-    animation:blink infinite ease-in-out;
+position:absolute;
+border-radius:50%;
+animation:blink infinite ease-in-out;
 }
 
 @keyframes blink{
-    0%{
-        opacity:0.2;
-        transform:scale(1);
-    }
-    50%{
-        opacity:1;
-        transform:scale(1.5);
-    }
-    100%{
-        opacity:0.2;
-        transform:scale(1);
-    }
+0%{opacity:.2;transform:scale(1);}
+50%{opacity:1;transform:scale(1.5);}
+100%{opacity:.2;transform:scale(1);}
 }
-
-/* ---------- ЛОГО ---------- */
 
 .logo{
-    position:absolute;
-    top:25px;
-    left:35px;
-
-    color:#b266ff;
-    font-size:58px;
-    font-weight:bold;
-    letter-spacing:3px;
-
-    text-shadow:
-        0 0 4px #a855ff,
-        0 0 8px #9333ea;
-
-    z-index:2;
+position:absolute;
+top:25px;
+left:35px;
+font-size:58px;
+font-weight:bold;
+color:#b266ff;
+text-shadow:0 0 4px #a855ff;
+z-index:2;
 }
 
-/* ---------- ПОИСК ---------- */
-
 .top-bar{
-
-    position:absolute;
-
-    top:25px;
-    right:30px;
-
-    z-index:5;
+position:absolute;
+top:25px;
+right:30px;
+z-index:5;
 }
 
 #searchInput{
-
-    width:260px;
-
-    padding:14px 18px;
-
-    border-radius:18px;
-
-    border:1px solid rgba(180,120,255,0.35);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(22,22,22,0.95),
-            rgba(52,20,78,0.95)
-        );
-
-    color:white;
-
-    outline:none;
-
-    font-size:16px;
-
-    transition:0.3s;
-
-    box-shadow:
-        0 0 14px rgba(168,85,247,0.18);
+width:250px;
+padding:14px;
+border:none;
+border-radius:18px;
+background:rgba(40,20,60,.95);
+color:white;
+outline:none;
+font-size:16px;
+border:1px solid rgba(180,120,255,.3);
 }
 
-/* ---------- МЕНЮ ---------- */
-
 .menu{
-    position:absolute;
-    top:115px;
-    left:40px;
-
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-
-    z-index:2;
+position:absolute;
+top:115px;
+left:40px;
+display:flex;
+flex-direction:column;
+gap:18px;
+z-index:2;
 }
 
 .menu a,
 .menu button{
-    color:#d6b3ff;
-    text-decoration:none;
-    font-size:22px;
-
-    background:none;
-    border:none;
-
-    cursor:pointer;
-
-    text-align:left;
-
-    transition:0.2s;
+background:none;
+border:none;
+color:#d6b3ff;
+font-size:22px;
+cursor:pointer;
+text-align:left;
+transition:.2s;
 }
 
-.menu a:hover,
 .menu button:hover{
-    color:white;
-    transform:translateX(6px);
+transform:translateX(5px);
+color:white;
 }
 
-/* ---------- SETTINGS ---------- */
-
-.settings-panel{
-    position:absolute;
-
-    left:220px;
-    top:100px;
-
-    width:320px;
-
-    background:rgba(20,20,20,0.96);
-
-    border:1px solid rgba(180,120,255,0.4);
-
-    border-radius:20px;
-
-    padding:20px;
-
-    display:none;
-
-    z-index:10;
-
-    box-shadow:
-        0 0 30px rgba(168,85,247,0.25);
-
-    backdrop-filter:blur(10px);
+.panel{
+position:absolute;
+left:220px;
+width:320px;
+padding:20px;
+border-radius:22px;
+background:rgba(20,20,20,.96);
+border:1px solid rgba(180,120,255,.35);
+display:none;
+z-index:20;
+backdrop-filter:blur(10px);
 }
 
-.settings-panel h2{
-    margin-top:0;
-    color:#d6b3ff;
+.panel h2{
+margin-top:0;
+color:#d8b4fe;
 }
 
-/* ---------- LOGIN PANEL ---------- */
+#settingsPanel{top:100px;}
+#loginPanel{top:360px;}
+#newsPanel{top:220px;}
 
-.login-panel{
-
-    position:absolute;
-
-    left:220px;
-    top:390px;
-
-    width:300px;
-
-    background:rgba(20,20,20,0.96);
-
-    border:1px solid rgba(180,120,255,0.4);
-
-    border-radius:22px;
-
-    padding:20px;
-
-    display:none;
-
-    z-index:20;
-
-    backdrop-filter:blur(10px);
-
-    box-shadow:
-        0 0 30px rgba(168,85,247,0.25);
+input,select{
+width:100%;
+padding:14px;
+border:none;
+border-radius:16px;
+background:rgba(40,20,60,.95);
+color:white;
+outline:none;
+font-size:15px;
+box-sizing:border-box;
+margin-bottom:14px;
 }
 
-.login-panel h2{
-
-    margin-top:0;
-
-    color:#d8b4fe;
+.panel button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:16px;
+background:linear-gradient(135deg,#7c3aed,#a855f7);
+color:white;
+font-size:16px;
+cursor:pointer;
 }
-
-.login-panel input{
-
-    width:100%;
-
-    margin-bottom:14px;
-
-    padding:14px;
-
-    box-sizing:border-box;
-
-    border:none;
-
-    border-radius:16px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(22,22,22,0.95),
-            rgba(52,20,78,0.95)
-        );
-
-    color:white;
-
-    outline:none;
-
-    font-size:15px;
-
-    border:1px solid rgba(180,120,255,0.3);
-}
-
-.login-panel button{
-
-    width:100%;
-
-    padding:14px;
-
-    border:none;
-
-    border-radius:16px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7c3aed,
-            #a855f7
-        );
-
-    color:white;
-
-    font-size:16px;
-
-    cursor:pointer;
-}
-
-/* ---------- SELECT ---------- */
-
-.setting{
-    margin-bottom:22px;
-}
-
-.setting label{
-    display:block;
-    margin-bottom:12px;
-    font-size:18px;
-    color:#d9b3ff;
-}
-
-.custom-select{
-    position:relative;
-}
-
-.custom-select select{
-
-    width:100%;
-
-    padding:15px 18px;
-
-    border-radius:18px;
-
-    border:1px solid rgba(180,120,255,0.35);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(22,22,22,0.98),
-            rgba(52,20,78,0.98)
-        );
-
-    color:#f2e7ff;
-
-    font-size:16px;
-
-    font-weight:600;
-
-    outline:none;
-
-    cursor:pointer;
-
-    appearance:none;
-}
-
-/* ---------- НОВОСТИ ---------- */
-
-.news-panel{
-
-    position:absolute;
-
-    left:220px;
-    top:230px;
-
-    width:340px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(20,20,20,0.97),
-            rgba(55,20,85,0.97)
-        );
-
-    border:1px solid rgba(180,120,255,0.35);
-
-    border-radius:24px;
-
-    padding:22px;
-
-    display:none;
-
-    z-index:20;
-
-    backdrop-filter:blur(10px);
-
-    box-shadow:
-        0 0 25px rgba(168,85,247,0.25);
-}
-
-.news-panel h2{
-
-    margin-top:0;
-
-    color:#d8b4fe;
-
-    font-size:28px;
-}
-
-.news-item{
-
-    background:
-        rgba(255,255,255,0.05);
-
-    border-radius:16px;
-
-    padding:18px;
-
-    line-height:1.6;
-
-    color:#ededed;
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-}
-
-/* ---------- AFK PANEL ---------- */
-
-.afk-panel{
-
-    position:absolute;
-
-    left:220px;
-    top:320px;
-
-    width:340px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(20,20,20,0.97),
-            rgba(55,20,85,0.97)
-        );
-
-    border:1px solid rgba(180,120,255,0.35);
-
-    border-radius:24px;
-
-    padding:22px;
-
-    display:none;
-
-    z-index:20;
-
-    backdrop-filter:blur(10px);
-
-    box-shadow:
-        0 0 25px rgba(168,85,247,0.25);
-}
-
-.afk-panel h2{
-
-    margin-top:0;
-
-    color:#d8b4fe;
-
-    font-size:30px;
-}
-
-.afk-count{
-
-    font-size:24px;
-
-    margin-top:18px;
-    margin-bottom:22px;
-
-    color:#f3e8ff;
-}
-
-.afk-button{
-
-    width:100%;
-
-    padding:18px;
-
-    border:none;
-
-    border-radius:20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7c3aed,
-            #a855f7
-        );
-
-    color:white;
-
-    font-size:24px;
-
-    cursor:pointer;
-
-    transition:0.15s;
-}
-
-.afk-button:hover{
-
-    transform:scale(1.03);
-
-    box-shadow:
-        0 0 25px rgba(168,85,247,0.45);
-}
-
-.afk-button:active{
-
-    transform:scale(0.98);
-}
-
-/* ---------- ЛИДЕРБОРД ---------- */
-
-.leaderboard{
-
-    margin-top:28px;
-
-    background:
-        rgba(255,255,255,0.05);
-
-    border-radius:18px;
-
-    padding:16px;
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-}
-
-.leaderboard h3{
-
-    margin-top:0;
-
-    color:#e9d5ff;
-}
-
-.leader{
-
-    padding:10px 0;
-
-    border-bottom:
-        1px solid rgba(255,255,255,0.08);
-
-    color:#f5f3ff;
-}
-
-/* ---------- КАРТОЧКИ ---------- */
 
 .cards{
-    position:absolute;
-    top:120px;
-    right:30px;
-
-    width:72%;
-
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-
-    gap:22px;
-
-    z-index:2;
-
-    padding-bottom:80px;
+position:absolute;
+top:120px;
+right:30px;
+width:72%;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:22px;
+padding-bottom:80px;
+z-index:2;
 }
 
 .card{
-    min-height:560px;
-
-    background:rgba(140, 0, 255, 0.15);
-
-    border:1px solid rgba(180, 120, 255, 0.4);
-
-    border-radius:24px;
-
-    backdrop-filter:blur(5px);
-
-    box-shadow:
-        0 0 15px rgba(168, 85, 247, 0.25);
-
-    transition:0.2s;
-
-    padding:18px;
-
-    box-sizing:border-box;
-
-    display:flex;
-
-    flex-direction:column;
-
-    overflow:hidden;
+background:rgba(140,0,255,.15);
+border:1px solid rgba(180,120,255,.35);
+border-radius:24px;
+padding:18px;
+display:flex;
+flex-direction:column;
+min-height:560px;
+backdrop-filter:blur(5px);
+box-shadow:0 0 15px rgba(168,85,247,.2);
 }
 
 .card:hover{
-    transform:translateY(-3px);
+transform:translateY(-3px);
 }
 
-/* ---------- ТОВАР ---------- */
-
 .product-image{
-    width:100%;
-    height:170px;
-
-    border-radius:18px;
-
-    background:linear-gradient(
-        135deg,
-        rgba(180,120,255,0.5),
-        rgba(80,0,150,0.7)
-    );
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:28px;
-    font-weight:bold;
-
-    margin-bottom:18px;
+height:170px;
+border-radius:18px;
+background:linear-gradient(135deg,rgba(180,120,255,.5),rgba(80,0,150,.7));
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+font-weight:bold;
+margin-bottom:18px;
 }
 
 .product-title{
-    font-size:30px;
-    font-weight:bold;
-
-    margin-bottom:16px;
-
-    color:#d9b3ff;
+font-size:30px;
+font-weight:bold;
+margin-bottom:15px;
+color:#d9b3ff;
 }
 
 .product-price{
-    color:#c084fc;
-
-    font-size:22px;
-
-    line-height:1.5;
-
-    margin-bottom:18px;
+font-size:22px;
+line-height:1.5;
+color:#c084fc;
+margin-bottom:18px;
 }
-
-/* ---------- КНОПКА ---------- */
 
 .buy-btn{
-
-    margin-top:18px;
-
-    padding:14px;
-
-    border:none;
-
-    border-radius:16px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7c3aed,
-            #a855f7
-        );
-
-    color:white;
-
-    font-size:17px;
-
-    cursor:pointer;
-
-    transition:0.2s;
+margin-top:18px;
+padding:14px;
+border:none;
+border-radius:16px;
+background:linear-gradient(135deg,#7c3aed,#a855f7);
+color:white;
+font-size:17px;
+cursor:pointer;
 }
-
-.buy-btn:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 0 18px rgba(168,85,247,0.45);
-}
-
-/* ---------- ОПИСАНИЕ ---------- */
 
 .info-box{
-    background:rgba(255,255,255,0.05);
-
-    border-radius:14px;
-
-    padding:12px;
-
-    border:1px solid rgba(255,255,255,0.08);
-
-    margin-top:auto;
+background:rgba(255,255,255,.05);
+border-radius:14px;
+padding:12px;
+margin-top:auto;
+border:1px solid rgba(255,255,255,.08);
 }
 
 .info-box summary{
-    list-style:none;
-    cursor:pointer;
-
-    font-size:18px;
-
-    color:#e0c3ff;
-
-    display:flex;
-    align-items:center;
-    gap:10px;
+list-style:none;
+cursor:pointer;
+display:flex;
+gap:10px;
+font-size:18px;
+color:#e0c3ff;
 }
 
 .info-box summary::-webkit-details-marker{
-    display:none;
+display:none;
 }
 
 .arrow{
-    transition:0.2s;
+transition:.2s;
 }
 
 .info-box[open] .arrow{
-    transform:rotate(90deg);
+transform:rotate(90deg);
 }
 
-/* ---------- ЭФФЕКТЫ ---------- */
-
 .particle{
-
-    position:fixed;
-
-    width:6px;
-    height:6px;
-
-    border-radius:50%;
-
-    background:#c084fc;
-
-    pointer-events:none;
-
-    animation:particleMove 1s linear forwards;
-
-    z-index:999;
+position:fixed;
+width:6px;
+height:6px;
+border-radius:50%;
+background:#c084fc;
+pointer-events:none;
+animation:particleMove 1s linear forwards;
+z-index:999;
 }
 
 @keyframes particleMove{
-
-    0%{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-    100%{
-        opacity:0;
-        transform:translateY(-80px);
-    }
+0%{opacity:1;transform:translateY(0);}
+100%{opacity:0;transform:translateY(-80px);}
 }
-
-/* ---------- БЕЛАЯ ТЕМА ---------- */
 
 .white-theme{
-    background:white;
-    color:black;
-}
-
-.white-theme .menu a,
-.white-theme .menu button{
-    color:#6d28d9;
+background:white;
+color:black;
 }
 
 .white-theme .card{
-    background:#f1f1f1;
-    border:1px solid #ccc;
+background:#f1f1f1;
+border:1px solid #ccc;
 }
 
-.white-theme .settings-panel,
-.white-theme .login-panel,
-.white-theme .news-panel,
-.white-theme .afk-panel{
-
-    background:white;
-
-    border:1px solid #ccc;
-
-    color:black;
+.white-theme .panel{
+background:white;
+border:1px solid #ccc;
+color:black;
 }
 
 .white-theme input,
 .white-theme select{
-
-    background:white !important;
-    color:black !important;
+background:white;
+color:black;
 }
 
-.white-theme .news-item,
-.white-theme .leaderboard{
-
-    background:#f3f3f3;
-
-    color:black;
-}
-
-.white-theme .leader{
-
-    color:black;
-
-    border-bottom:
-        1px solid #ddd;
-}
-
-.white-theme .afk-count{
-
-    color:black;
-}
-
-.white-theme .afk-panel h2,
-.white-theme .leaderboard h3{
-
-    color:#6d28d9;
+.white-theme .menu button{
+color:#6d28d9;
 }
 
 </style>
@@ -771,234 +282,76 @@ body{
 
 <div class="logo">X shop</div>
 
-<!-- ПОИСК -->
-
 <div class="top-bar">
-
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="Поиск товара..."
-        onkeyup="searchProducts()"
-    >
-
+<input type="text" id="searchInput" placeholder="Поиск товара..." onkeyup="searchProducts()">
 </div>
-
-<!-- МЕНЮ -->
 
 <div class="menu">
 
-    <a href="#">Главная</a>
-    <a href="#">Контакты</a>
-    <a href="#">Отзывы</a>
+<button onclick="togglePanel('newsPanel')">
+Новости
+</button>
 
-    <button onclick="toggleNews()">
-        Новости
-    </button>
+<button onclick="togglePanel('settingsPanel')">
+Настройки
+</button>
 
-    <button onclick="toggleAfk()">
-        АФК
-    </button>
-
-    <button onclick="toggleSettings()">
-        Настройки
-    </button>
-
-    <button onclick="toggleLogin()">
-        Логин
-    </button>
+<button onclick="togglePanel('loginPanel')">
+Логин
+</button>
 
 </div>
 
 <!-- SETTINGS -->
 
-<div class="settings-panel" id="settingsPanel">
+<div class="panel" id="settingsPanel">
 
-    <h2>Настройки интерфейса</h2>
+<h2>Настройки</h2>
 
-    <div class="setting">
+<select id="hintsSelect" onchange="toggleHints(this.value)">
+<option value="on">Подсказки включены</option>
+<option value="off">Подсказки выключены</option>
+</select>
 
-        <label>
-            Подсказки
-        </label>
+<select id="themeSelect" onchange="changeTheme(this.value)">
+<option value="standard">Стандартный</option>
+<option value="dark">Темный</option>
+<option value="splin">splin</option>
+<option value="white-stars">Белый</option>
+<option value="pure-white">👎просто белый👎</option>
+</select>
 
-        <div class="custom-select">
-
-            <select
-                id="hintsSelect"
-                onchange="toggleHints(this.value)"
-            >
-
-                <option value="on">
-                    Включены
-                </option>
-
-                <option value="off">
-                    Выключены
-                </option>
-
-            </select>
-
-        </div>
-
-    </div>
-
-    <div class="setting">
-
-        <label>
-            Фон
-        </label>
-
-        <div class="custom-select">
-
-            <select
-                id="themeSelect"
-                onchange="changeTheme(this.value)"
-            >
-
-                <option value="standard">
-                    Стандартный
-                </option>
-
-                <option value="dark">
-                    Темный
-                </option>
-
-                <option value="splin">
-                    splin
-                </option>
-
-                <option value="white-stars">
-                    Белый
-                </option>
-
-                <option value="pure-white">
-                    👎просто белый👎
-                </option>
-
-            </select>
-
-        </div>
-
-    </div>
-
-    <div class="setting">
-
-        <label>
-            Музыка
-        </label>
-
-        <div class="custom-select">
-
-            <select onchange="toggleMusic(this.value)">
-
-                <option value="on">
-                    Включена
-                </option>
-
-                <option value="off">
-                    Выключена
-                </option>
-
-            </select>
-
-        </div>
-
-    </div>
+<select onchange="toggleMusic(this.value)">
+<option value="on">Музыка включена</option>
+<option value="off">Музыка выключена</option>
+</select>
 
 </div>
 
 <!-- LOGIN -->
 
-<div class="login-panel" id="loginPanel">
+<div class="panel" id="loginPanel">
 
-    <h2>Вход</h2>
+<h2>Вход</h2>
 
-    <input
-        type="text"
-        id="nickname"
-        placeholder="Ник"
-    >
+<input type="text" id="nickname" placeholder="Ник">
+<input type="password" id="password" placeholder="Пароль">
 
-    <input
-        type="password"
-        id="password"
-        placeholder="Пароль"
-    >
-
-    <button onclick="saveAccount()">
-        Войти
-    </button>
+<button onclick="saveAccount()">
+Войти
+</button>
 
 </div>
 
-<!-- НОВОСТИ -->
+<!-- NEWS -->
 
-<div class="news-panel" id="newsPanel">
+<div class="panel" id="newsPanel">
 
-    <h2>
-        Новости XShop
-    </h2>
+<h2>Новости XShop</h2>
 
-    <div class="news-item">
-
-        Всем хай ето XShop
-        крутой магазин
-        (наверное)
-
-    </div>
-
+<div>
+Всем хай ето XShop крутой магазин (наверное)
 </div>
-
-<!-- AFK -->
-
-<div class="afk-panel" id="afkPanel">
-
-    <h2>
-        AFK Кликер
-    </h2>
-
-    <div class="afk-count">
-
-        Нажатий:
-        <span id="afkCounter">
-            0
-        </span>
-
-    </div>
-
-    <button
-        class="afk-button"
-        onclick="afkClick()"
-    >
-        ЖМЯК
-    </button>
-
-    <div class="leaderboard">
-
-        <h3>
-            Таблица лидеров
-        </h3>
-
-        <div class="leader">
-
-            🥇 XMaster — 5421
-
-        </div>
-
-        <div class="leader">
-
-            🥈 Orbital — 3810
-
-        </div>
-
-        <div class="leader">
-
-            🥉 Player777 — 2100
-
-        </div>
-
-    </div>
 
 </div>
 
@@ -1006,370 +359,429 @@ body{
 
 <div class="cards">
 
-    <div class="card">
+<!-- ЕНЕРГО -->
 
-        <div class="product-image">
-            ENERGY
-        </div>
+<div class="card">
 
-        <div class="product-title">
-            Енерго масло
-        </div>
+<div class="product-image">
+ENERGY
+</div>
 
-        <div class="product-price">
-            Цена:
-            <br>
-            1 шт — 5 монет
-            <br>
-            или
-            <br>
-            1 пластина орбистали
-        </div>
+<div class="product-title">
+Енерго масло
+</div>
 
-        <button
-            class="buy-btn"
-            onclick="buyEffect(this)"
-        >
-            Купить
-        </button>
+<div class="product-price">
+Цена:
+<br>
+1 шт — 5 монет
+<br>
+или
+<br>
+1 пластина орбистали
+</div>
 
-        <details class="info-box hint-box">
+<button class="buy-btn" onclick="buyEffect(this)">
+Купить
+</button>
 
-            <summary>
-                <span class="arrow">></span>
-                Что такое енерго масло?
-            </summary>
+<details class="info-box hint-box">
 
-            <p>
-                Енерго масло —
-                странная жидкость,
-                которая может дать способность.
-            </p>
+<summary>
+<span class="arrow">></span>
+Что такое енерго масло?
+</summary>
 
-        </details>
+<p>
+Енерго масло —
+странная жидкость,
+которая может дать способность.
+</p>
 
-    </div>
+</details>
 
-    <div class="card">
+</div>
 
-        <div class="product-image">
-            LOGIC
-        </div>
+<!-- ЛОГИЧЕСКИЙ -->
 
-        <div class="product-title">
-            Логический чип
-        </div>
+<div class="card">
 
-        <div class="product-price">
-            Цена:
-            <br>
-            25 монет
-            <br>
-            или
-            <br>
-            4 пластины орбистали
-        </div>
+<div class="product-image">
+LOGIC
+</div>
 
-        <button
-            class="buy-btn"
-            onclick="buyEffect(this)"
-        >
-            Купить
-        </button>
+<div class="product-title">
+Логический чип
+</div>
 
-        <details class="info-box hint-box">
+<div class="product-price">
+Цена:
+<br>
+1 шт — 15 монет
+<br>
+или
+<br>
+3 пластины орбистали
+</div>
 
-            <summary>
-                <span class="arrow">></span>
-                Что такое Логический чип?
-            </summary>
+<button class="buy-btn" onclick="buyEffect(this)">
+Купить
+</button>
 
-            <p>
-                Используется
-                в крафтах
-                и ракетостроении.
-            </p>
+<details class="info-box hint-box">
 
-        </details>
+<summary>
+<span class="arrow">></span>
+Что такое Логический чип?
+</summary>
 
-    </div>
+<p>
+Можно использовать
+в крафтах и ракетостроении.
+</p>
 
-    <div class="card">
+</details>
 
-        <div class="product-image">
-            COMPUTE
-        </div>
+</div>
 
-        <div class="product-title">
-            Вычислительный чип
-        </div>
+<!-- ВЫЧИСЛИТЕЛЬНЫЙ -->
 
-        <div class="product-price">
-            Цена:
-            <br>
-            25 монет
-            <br>
-            или
-            <br>
-            4 пластины орбистали
-        </div>
+<div class="card">
 
-        <button
-            class="buy-btn"
-            onclick="buyEffect(this)"
-        >
-            Купить
-        </button>
+<div class="product-image">
+COMPUTE
+</div>
 
-        <details class="info-box hint-box">
+<div class="product-title">
+Вычислительный чип
+</div>
 
-            <summary>
-                <span class="arrow">></span>
-                Что такое Вычислительный чип?
-            </summary>
+<div class="product-price">
+Цена:
+<br>
+1 шт — 15 монет
+<br>
+или
+<br>
+3 пластины орбистали
+</div>
 
-            <p>
-                Дает слот
-                для взрывчатки
-                в ракете.
-            </p>
+<button class="buy-btn" onclick="buyEffect(this)">
+Купить
+</button>
 
-        </details>
+<details class="info-box hint-box">
 
-    </div>
+<summary>
+<span class="arrow">></span>
+Что такое Вычислительный чип?
+</summary>
+
+<p>
+Дает слот
+для взрывчатки
+в ракете.
+</p>
+
+</details>
+
+</div>
+
+<!-- ХРАНИЛИЩЕ -->
+
+<div class="card">
+
+<div class="product-image">
+STORAGE
+</div>
+
+<div class="product-title">
+Чип хранилища
+</div>
+
+<div class="product-price">
+Цена:
+<br>
+1 шт — 15 монет
+<br>
+или
+<br>
+3 пластины орбистали
+</div>
+
+<button class="buy-btn" onclick="buyEffect(this)">
+Купить
+</button>
+
+<details class="info-box hint-box">
+
+<summary>
+<span class="arrow">></span>
+Что такое Чип хранилища?
+</summary>
+
+<p>
+Можно использовать
+в ракетостроении
+для добавления
+слота груза в ракету.
+</p>
+
+</details>
+
+</div>
 
 </div>
 
 <!-- МУЗЫКА -->
 
-<audio
-    id="bgMusic"
-    loop
->
-
-<source
-src="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a73467.mp3"
-type="audio/mpeg">
-
+<audio id="bgMusic" loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 
-const starsContainer =
-    document.getElementById("stars");
+const stars=document.getElementById("stars");
 
-/* ---------- ЗВЕЗДЫ ---------- */
+function createStars(color="white"){
 
-function createStars(color = "white"){
+stars.innerHTML="";
 
-    starsContainer.innerHTML = "";
+for(let i=0;i<300;i++){
 
-    for(let i = 0; i < 300; i++){
+let s=document.createElement("div");
 
-        let star =
-            document.createElement("div");
+s.className="star";
 
-        star.className = "star";
+s.style.top=Math.random()*100+"%";
+s.style.left=Math.random()*100+"%";
 
-        star.style.top =
-            Math.random() * 100 + "%";
+let size=Math.random()*3+1+"px";
 
-        star.style.left =
-            Math.random() * 100 + "%";
+s.style.width=size;
+s.style.height=size;
 
-        let size =
-            Math.random() * 3 + 1 + "px";
+s.style.background=color;
 
-        star.style.width = size;
-        star.style.height = size;
+s.style.animationDuration=(Math.random()*4+2)+"s";
 
-        star.style.background = color;
-
-        star.style.animationDuration =
-            (Math.random() * 4 + 2) + "s";
-
-        starsContainer.appendChild(star);
-    }
+stars.appendChild(s);
+}
 }
 
 createStars();
 
-/* ---------- ПАНЕЛИ ---------- */
+function togglePanel(id){
 
-function toggleSettings(){
+const p=document.getElementById(id);
 
-    const panel =
-        document.getElementById("settingsPanel");
-
-    panel.style.display =
-        panel.style.display === "block"
-        ? "none"
-        : "block";
+p.style.display=
+p.style.display==="block"
+?"none"
+:"block";
 }
-
-function toggleLogin(){
-
-    const panel =
-        document.getElementById("loginPanel");
-
-    panel.style.display =
-        panel.style.display === "block"
-        ? "none"
-        : "block";
-}
-
-function toggleNews(){
-
-    const panel =
-        document.getElementById("newsPanel");
-
-    panel.style.display =
-        panel.style.display === "block"
-        ? "none"
-        : "block";
-}
-
-function toggleAfk(){
-
-    const panel =
-        document.getElementById(
-            "afkPanel"
-        );
-
-    panel.style.display =
-        panel.style.display === "block"
-        ? "none"
-        : "block";
-}
-
-/* ---------- AFK ---------- */
-
-let afkCount = 0;
-
-function afkClick(){
-
-    afkCount++;
-
-    document.getElementById(
-        "afkCounter"
-    ).innerText = afkCount;
-
-    localStorage.setItem(
-        "xshop_afk",
-        afkCount
-    );
-}
-
-/* ---------- ПОДСКАЗКИ ---------- */
-
-function toggleHints(value){
-
-    localStorage.setItem(
-        "xshop_hints",
-        value
-    );
-
-    const hints =
-        document.querySelectorAll(".hint-box");
-
-    hints.forEach(hint => {
-
-        hint.style.display =
-            value === "off"
-            ? "none"
-            : "block";
-    });
-}
-
-/* ---------- ПОИСК ---------- */
 
 function searchProducts(){
 
-    let input =
-        document.getElementById("searchInput")
-        .value
-        .toLowerCase();
+let input=
+document.getElementById("searchInput")
+.value.toLowerCase();
 
-    let cards =
-        document.querySelectorAll(".card");
+document.querySelectorAll(".card")
+.forEach(card=>{
 
-    cards.forEach(card => {
+let title=
+card.querySelector(".product-title")
+.innerText.toLowerCase();
 
-        let title =
-            card.querySelector(".product-title")
-            .innerText
-            .toLowerCase();
+card.style.display=
+title.includes(input)
+?"flex"
+:"none";
 
-        card.style.display =
-            title.includes(input)
-            ? "flex"
-            : "none";
-    });
+});
 }
-
-/* ---------- АККАУНТ ---------- */
 
 function saveAccount(){
 
-    let nick =
-        document.getElementById("nickname").value;
+localStorage.setItem(
+"xshop_nick",
+document.getElementById("nickname").value
+);
 
-    let pass =
-        document.getElementById("password").value;
+localStorage.setItem(
+"xshop_pass",
+document.getElementById("password").value
+);
 
-    localStorage.setItem(
-        "xshop_nick",
-        nick
-    );
-
-    localStorage.setItem(
-        "xshop_pass",
-        pass
-    );
-
-    alert("Аккаунт сохранен!");
+alert("Аккаунт сохранен!");
 }
 
-/* ---------- ТЕМЫ ---------- */
+function toggleHints(v){
+
+localStorage.setItem("xshop_hints",v);
+
+document.querySelectorAll(".hint-box")
+.forEach(h=>{
+
+h.style.display=
+v==="off"
+?"none"
+:"block";
+
+});
+}
 
 function changeTheme(theme){
 
-    localStorage.setItem(
-        "xshop_theme",
-        theme
-    );
+localStorage.setItem(
+"xshop_theme",
+theme
+);
 
-    document.body.classList.remove(
-        "white-theme"
-    );
+document.body.classList.remove(
+"white-theme"
+);
 
-    if(theme === "standard"){
+if(theme==="standard"){
 
-        document.body.style.background =
-            "black";
+document.body.style.background="black";
+createStars("white");
+}
 
-        createStars("white");
-    }
+if(theme==="dark"){
 
-    if(theme === "dark"){
+document.body.style.background="#111";
+createStars("#444");
+}
 
-        document.body.style.background =
-            "#0f0f0f";
+if(theme==="splin"){
 
-        createStars("#444");
-    }
+document.body.style.background="black";
+createStars("#bb66ff");
+}
 
-    if(theme === "splin"){
+if(theme==="white-stars"){
 
-        document.body.style.background =
-            "black";
+document.body.classList.add(
+"white-theme"
+);
 
-        createStars("#bb66ff");
-    }
+document.body.style.background="white";
 
-    if(theme === "white-stars"){
+createStars("black");
+}
 
-        document.body.classList.add(
-            "white-theme"
-        );
-    
+if(theme==="pure-white"){
+
+document.body.classList.add(
+"white-theme"
+);
+
+document.body.style.background="white";
+
+stars.innerHTML="";
+}
+}
+
+const music=
+document.getElementById("bgMusic");
+
+music.volume=.35;
+
+document.body.addEventListener(
+"click",
+()=>{music.play();},
+{once:true}
+);
+
+function toggleMusic(v){
+
+localStorage.setItem(
+"xshop_music",
+v
+);
+
+v==="off"
+?music.pause()
+:music.play();
+}
+
+function buyEffect(btn){
+
+const r=
+btn.getBoundingClientRect();
+
+for(let i=0;i<10;i++){
+
+let p=
+document.createElement("div");
+
+p.className="particle";
+
+p.style.left=
+r.left+Math.random()*40+"px";
+
+p.style.top=
+r.top+Math.random()*20+"px";
+
+document.body.appendChild(p);
+
+setTimeout(()=>{
+p.remove();
+},1000);
+}
+
+btn.innerText="Куплено";
+
+setTimeout(()=>{
+btn.innerText="Купить";
+},1200);
+}
+
+window.onload=()=>{
+
+let nick=
+localStorage.getItem("xshop_nick");
+
+let pass=
+localStorage.getItem("xshop_pass");
+
+if(nick)
+document.getElementById("nickname").value=nick;
+
+if(pass)
+document.getElementById("password").value=pass;
+
+let theme=
+localStorage.getItem("xshop_theme");
+
+if(theme){
+
+changeTheme(theme);
+
+document.getElementById("themeSelect").value=theme;
+}
+
+let hints=
+localStorage.getItem("xshop_hints");
+
+if(hints){
+
+toggleHints(hints);
+
+document.getElementById("hintsSelect").value=hints;
+}
+
+if(
+localStorage.getItem("xshop_music")==="off"
+){
+music.pause();
+}
+
+};
+
+</script>
+
+</body>
+    </html>

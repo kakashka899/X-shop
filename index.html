@@ -9,7 +9,7 @@
 
 body{
     margin:0;
-    overflow:hidden;
+    overflow:auto;
     font-family:Arial,sans-serif;
     color:white;
     background:black;
@@ -132,7 +132,7 @@ body{
     color:#d6b3ff;
 }
 
-/* ---------- УМНЫЙ SELECT ---------- */
+/* ---------- SELECT ---------- */
 
 .setting{
     margin-bottom:22px;
@@ -223,13 +223,6 @@ body{
     pointer-events:none;
 
     font-size:22px;
-
-    transition:0.3s;
-}
-
-.custom-select:hover::after{
-
-    color:white;
 }
 
 .custom-select option{
@@ -237,11 +230,9 @@ body{
     background:#181818;
 
     color:white;
-
-    padding:10px;
 }
 
-/* ---------- SPLIN ТЕМА ---------- */
+/* ---------- ТЕМЫ ---------- */
 
 body.splin-theme .custom-select select{
 
@@ -252,25 +243,8 @@ body.splin-theme .custom-select select{
             rgba(90,40,140,0.98)
         );
 
-    border-color:rgba(210,140,255,0.45);
-
-    box-shadow:
-        0 0 18px rgba(187,102,255,0.35);
-
     color:#f4dcff;
 }
-
-body.splin-theme .custom-select::after{
-
-    color:#f0bfff;
-}
-
-body.splin-theme .custom-select option{
-
-    background:#2a1438;
-}
-
-/* ---------- WHITE STARS ---------- */
 
 body.white-stars-theme .custom-select select{
 
@@ -282,48 +256,13 @@ body.white-stars-theme .custom-select select{
         );
 
     color:#5b21b6;
-
-    border:1px solid #cfcfcf;
-
-    box-shadow:
-        0 0 10px rgba(0,0,0,0.08);
 }
-
-body.white-stars-theme .custom-select::after{
-
-    color:#6d28d9;
-}
-
-body.white-stars-theme .custom-select option{
-
-    background:white;
-
-    color:black;
-}
-
-/* ---------- PURE WHITE ---------- */
 
 body.pure-white-theme .custom-select select{
 
     background:white;
 
     color:#444;
-
-    border:1px solid #d8d8d8;
-
-    box-shadow:none;
-}
-
-body.pure-white-theme .custom-select::after{
-
-    color:#666;
-}
-
-body.pure-white-theme .custom-select option{
-
-    background:white;
-
-    color:black;
 }
 
 /* ---------- КАРТОЧКИ ---------- */
@@ -341,10 +280,12 @@ body.pure-white-theme .custom-select option{
     gap:22px;
 
     z-index:2;
+
+    padding-bottom:50px;
 }
 
 .card{
-    height:420px;
+    min-height:520px;
 
     background:rgba(140, 0, 255, 0.15);
 
@@ -362,6 +303,12 @@ body.pure-white-theme .custom-select option{
     padding:18px;
 
     box-sizing:border-box;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
 }
 
 .card:hover{
@@ -424,6 +371,10 @@ body.pure-white-theme .custom-select option{
     padding:12px;
 
     border:1px solid rgba(255,255,255,0.08);
+
+    margin-top:auto;
+
+    overflow:hidden;
 }
 
 .info-box summary{
@@ -456,12 +407,14 @@ body.pure-white-theme .custom-select option{
 
     line-height:1.5;
 
-    font-size:16px;
+    font-size:15px;
 
     margin-top:14px;
+
+    word-wrap:break-word;
 }
 
-/* ---------- БЕЛАЯ ТЕМА ---------- */
+/* ---------- БЕЛЫЕ ТЕМЫ ---------- */
 
 .white-theme{
     background:white;
@@ -571,6 +524,8 @@ body.pure-white-theme .custom-select option{
 
 <div class="cards">
 
+    <!-- ЕНЕРГО МАСЛО -->
+
     <div class="card">
 
         <div class="product-image">
@@ -582,6 +537,8 @@ body.pure-white-theme .custom-select option{
         </div>
 
         <div class="product-price">
+            Цена:
+            <br>
             1 шт — 5 монет
             <br>
             или
@@ -602,6 +559,129 @@ body.pure-white-theme .custom-select option{
                 в первый раз может дать вам способность,
                 или ее можно использовать
                 в крафтах сюжетных предметов.
+            </p>
+
+        </details>
+
+    </div>
+
+    <!-- ЛОГИЧЕСКИЙ ЧИП -->
+
+    <div class="card">
+
+        <div class="product-image">
+            LOGIC
+        </div>
+
+        <div class="product-title">
+            Логический чип
+        </div>
+
+        <div class="product-price">
+            Цена:
+            <br>
+            25 монет
+            <br>
+            или
+            <br>
+            4 пластины орбистали
+        </div>
+
+        <details class="info-box hint-box">
+
+            <summary>
+                <span class="arrow">></span>
+                Что такое Логический чип?
+            </summary>
+
+            <p>
+                "Логический чип"
+                можно использовать
+                в крафтах и в создании
+                ракетостроений.
+            </p>
+
+        </details>
+
+    </div>
+
+    <!-- ВЫЧИСЛИТЕЛЬНЫЙ ЧИП -->
+
+    <div class="card">
+
+        <div class="product-image">
+            COMPUTE
+        </div>
+
+        <div class="product-title">
+            Вычислительный чип
+        </div>
+
+        <div class="product-price">
+            Цена:
+            <br>
+            25 монет
+            <br>
+            или
+            <br>
+            4 пластины орбистали
+        </div>
+
+        <details class="info-box hint-box">
+
+            <summary>
+                <span class="arrow">></span>
+                Что такое Вычислительный чип?
+            </summary>
+
+            <p>
+                "Вычислительный чип"
+                или же "чип взрыва"
+                можно использовать
+                в создании ракетостроений.
+                Дает слот для взрывчатки
+                в ракету.
+            </p>
+
+        </details>
+
+    </div>
+
+    <!-- ЧИП ХРАНИЛИЩА -->
+
+    <div class="card">
+
+        <div class="product-image">
+            STORAGE
+        </div>
+
+        <div class="product-title">
+            Чип хранилища
+        </div>
+
+        <div class="product-price">
+            Цена:
+            <br>
+            25 монет
+            <br>
+            или
+            <br>
+            4 пластины орбистали
+        </div>
+
+        <details class="info-box hint-box">
+
+            <summary>
+                <span class="arrow">></span>
+                Что такое Чип хранилища?
+            </summary>
+
+            <p>
+                "Чип хранилища"
+                можно использовать
+                в создании ракетостроений.
+                Дает слот для груза
+                в ракету.
             </p>
 
         </details>
@@ -732,4 +812,4 @@ function changeTheme(theme){
 </script>
 
 </body>
-    </html>
+        </html>
